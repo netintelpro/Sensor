@@ -1,12 +1,13 @@
 <?php
+
 require_once 'Sensor.php';
 
 class SensorSystem
 {
     
-	private $sensors = array(); //list of all sensors
+    private $sensors = array(); //list of all sensors
 	
-	public function __construct($settings)
+    public function __construct($settings)
     {
 		
         foreach($settings as $setting) {
@@ -25,7 +26,7 @@ class SensorSystem
         return mt_rand() / mt_getrandmax();
     }    
 
-	private function updateSensorState($type)
+    private function updateSensorState($type)
     {
         //provides sensor type appropriate random state values
         switch ($type) {
@@ -41,7 +42,7 @@ class SensorSystem
 
 
 
-	public function getSensors()
+    public function getSensors()
     {
         //updates each sensor's state value
 		foreach($this->sensors as $sensor) {
