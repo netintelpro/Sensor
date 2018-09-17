@@ -40,7 +40,15 @@ class SensorSystem
 		    
 	}
 
+    private function updateSensors()
+    {
+//updates each sensor's state value
+                foreach($this->sensors as $sensor) {
+                        $sensor->setState($this->updateSensorState($sensor->getType()));
+                }
 
+
+    }
 
     public function getSensors()
     {
@@ -49,5 +57,22 @@ class SensorSystem
 			$sensor->setState($this->updateSensorState($sensor->getType()));
 		}
 		return $this->sensors;
-	}
+    }
+   
+   public function getSensorsArray()
+   {
+       $this->updateSensors();
+       //returns array version of objects
+       $sensor_array = [];
+       foreach($this->sensors as $sensor) {
+           $sensor_array[] = array (
+               'name' => $sensor->getName(),
+               'type' => $sensor->getType(),
+               'state'=> $sensor->getState(),
+               'alarm'=> $sensor->soundAlarm(),
+               'units'=> $sensor->getUnits()
+           );
+       }
+       return $sensor_array;
+    }
 }

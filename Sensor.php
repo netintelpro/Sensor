@@ -23,12 +23,17 @@ class Sensor
     {
         $this->state = $state;
     } 
-
+    
     public function getState()
-    {
-        return $this->state.$this->units;
+    {        
+        return $this->state;
     }
     
+    public function getUnits()
+    {
+        return $this->units;
+    } 
+
     public function getName()
     {
         return $this->name;
